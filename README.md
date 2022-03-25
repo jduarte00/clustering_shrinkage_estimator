@@ -33,8 +33,8 @@ r_clustering = clustering_shrinkage_estimator.get_shrinkage_est(data, alpha = 1)
 The purpose of this estimator is to regularize the correlation matrix estimation of a data set in high dimensionality (i.e. when the number of columns and the number of rows of your data set are big). There is a shrink factor $\alpha$ that allows adjusting the level of regularization of the estimator. An example of the estimator calculated using the S&P 500 over  6 years of historical data using three different levels of $\alpha$ (1, 0.5 and 0) is shown below: 
 
 <p align="center" width="100%">
-  <img src="./_static/cleansed_matrix_alpha_0.png" height="500">
-  <img src="./_static/cleansed_matrix_alpha_1_2.png" height="500">
+  <img src="./_static/cleansed_matrix_alpha_0.jpg" height="500">
+  <img src="./_static/cleansed_matrix_alpha_1_2.jpg" height="500">
   <img src="./_static/cleansed_matrix_alpha_1.jpg" height="500">
 </p>
 
