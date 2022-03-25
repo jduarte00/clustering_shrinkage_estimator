@@ -7,7 +7,7 @@ This estimator uses a clustering method to identify the underlying structure in 
 The purpose of this estimator is to regularize the correlation matrix estimation of a data set in high dimensionality (i.e. when the number of columns and the number of rows of your data set are big). There is a shrink factor $\alpha$ that allows adjusting the level of regularization of the estimator between the sample correlation estimator (R) (this is the one that is typically implemented in `np.corrcoef` or `pd.Dataframe.corr` ) and a shrinked version of R.
 
 <p align = "center">
-<img  src="https://render.githubusercontent.com/render/math?math=\LARGE\color{red}\R^{clust} = \alpha \tilde{R} (1-\alpha) R">
+<img  src="https://render.githubusercontent.com/render/math?math=\LARGE\color{red}\R^{clust} = \alpha \tilde{R} + (1-\alpha) R">
 </p>
 
 
@@ -35,7 +35,7 @@ The purpose of this estimator is to regularize the correlation matrix estimation
 <p align="center" width="100%">
   <img src="./_static/cleansed_matrix_alpha_0.png" height="500">
   <img src="./_static/cleansed_matrix_alpha_1_2.png" height="500">
-  <img src="./_static/cleansed_matrix_alpha_1.png" height="500">
+  <img src="./_static/cleansed_matrix_alpha_1.jpg" height="500">
 </p>
 
 
