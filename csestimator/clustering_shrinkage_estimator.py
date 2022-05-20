@@ -50,8 +50,8 @@ def get_shrinkage_est(X_matrix, alpha):
     # NOTA, AQUÍ SE USA UN RANDOM STATE DIFERENTE PARA HACER LOS CLUSTERINGS, LO QUE PUEDE OCASIONAR QUE
     # LAS INSTANCIAS NO SIEMPRE SEAN ASIGNADAS AL MISMO CLUSTER Y POR LO TANTO NO SIEMPRE SE OBTENGA EL MISMO RESULTADO
     # AL EJECUTAR LA FUNCIÓN. SE ESTABLECE RANDOM STATE PARA REPRODUCIR RESULTADOS.
-    if k =1 :
-        k=2
+    if K ==1 :
+        K=2
     C_kmeans = KMeans(n_clusters=K, random_state = 0, init='k-means++').fit(D_matrix)
     S_matrix = get_S_matrix(R_matrix, C_kmeans.labels_)
     R_tilde = get_R_tilde(S_matrix, C_kmeans.labels_)
