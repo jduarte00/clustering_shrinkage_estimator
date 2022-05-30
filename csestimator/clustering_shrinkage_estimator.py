@@ -38,7 +38,7 @@ def get_R_clust(R_matrix, R_tilde_matrix, alpha):
         return np.NaN
     return alpha*R_tilde_matrix + (1-alpha)*R_matrix
 
-def get_shrinkage_est(X_matrix, alpha):
+def get_shrinkage_est(X_matrix, alpha, return_labels = False):
     if not(0<=alpha and 1>= alpha):
         print("the value of alpha should be between 0 and 1")
         return np.NaN
@@ -57,5 +57,7 @@ def get_shrinkage_est(X_matrix, alpha):
     R_tilde = get_R_tilde(S_matrix, C_kmeans.labels_)
     shrink_est = (alpha*R_tilde + (1-alpha)*R_matrix)
     np.fill_diagonal(shrink_est, 1) 
+    if return_labels:
+        return (shrink_est, C_kmeans.labels_)
     return shrink_est
 
