@@ -52,7 +52,7 @@ def get_shrinkage_est(X_matrix, alpha, return_labels = False):
     # AL EJECUTAR LA FUNCIÓN. SE ESTABLECE RANDOM STATE PARA REPRODUCIR RESULTADOS.
     if K ==1 :
         K=2
-    C_kmeans = KMeans(n_clusters=K, random_state = 0, init='k-means++').fit(D_matrix)
+    C_kmeans = KMeans(n_clusters=K, random_state = 0, init='k-means++', n_init = 'auto').fit(D_matrix)
     S_matrix = get_S_matrix(R_matrix, C_kmeans.labels_)
     R_tilde = get_R_tilde(S_matrix, C_kmeans.labels_)
     shrink_est = (alpha*R_tilde + (1-alpha)*R_matrix)
