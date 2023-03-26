@@ -1,7 +1,6 @@
 import numpy as np
-from sklearn.cluster import KMeans
 import numpy.linalg as LA
-import pandas as pd
+from sklearn_extra.cluster import KMedoids
 
 
 def get_optimal_K(R_matrix, N, T):
@@ -52,11 +51,16 @@ def get_shrinkage_est(X_matrix, alpha, return_labels = False):
     # AL EJECUTAR LA FUNCIÓN. SE ESTABLECE RANDOM STATE PARA REPRODUCIR RESULTADOS.
     if K ==1 :
         K=2
-    C_kmeans = KMeans(n_clusters=K, random_state = 0, init='k-means++', n_init = 10).fit(D_matrix)
+    #C_kmeans = KMeans(n_clusters=K, random_state = 0, init='k-means++', n_init = 10).fit(X_matrix.T)
+    C_kmeans = KMedoids(n_clusters = K,
+                        random_state = 0,
+                        init='k-medoids++',
+                        method = 'pam',
+                        metric = 'precomputed').fit(D_matrix)
     S_matrix = get_S_matrix(R_matrix, C_kmeans.labels_)
     R_tilde = get_R_tilde(S_matrix, C_kmeans.labels_)
     shrink_est = (alpha*R_tilde + (1-alpha)*R_matrix)
-    np.fill_diagonal(shrink_est, 1) 
+    np.fill_diagonal(shrink_est, 1)
     if return_labels:
         return (shrink_est, C_kmeans.labels_)
     return shrink_est
